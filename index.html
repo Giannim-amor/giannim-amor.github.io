@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para el Amor de Mi Vida ❤️</title>
+    <meta name="description"
+        content="Una página romántica dedicada con amor, temporizador, momentos inolvidables y música especial.">
+
+    <!-- Favicon de corazón -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💜</text></svg>">
+
+    <!-- Hojas de estilo y tipografías -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ============================================================
+       1. PANTALLA DE CARGA (PRELOADER)
+       Con corazón girando que tiene carita tierna sonriente
+       ============================================================ -->
+    <div id="preloader" aria-label="Cargando">
+        <div class="loader-content">
+            <div class="heart-spinner-wrapper">
+                <div class="spinner-ring r1"></div>
+                <div class="spinner-ring r2"></div>
+
+                <!-- SVG del corazón con carita kawaii tierna -->
+                <svg class="cute-spinning-heart" viewBox="0 0 160 150" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ff70a6" />
+                            <stop offset="45%" stop-color="#d65db1" />
+                            <stop offset="100%" stop-color="#7b2cbf" />
+                        </linearGradient>
+                        <filter id="heartShadow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#c77dff" flood-opacity="0.6" />
+                        </filter>
+                    </defs>
+
+                    <!-- Cuerpo del corazón -->
+                    <path
+                        d="M 80,135 C 20,95 5,55 25,25 C 45,-5 75,10 80,30 C 85,10 115,-5 135,25 C 155,55 140,95 80,135 Z"
+                        fill="url(#heartGrad)" filter="url(#heartShadow)" />
+
+                    <!-- Ojo izquierdo con brillito -->
+                    <ellipse cx="58" cy="56" rx="5.5" ry="7.5" fill="#1b002c" />
+                    <circle cx="56" cy="53" r="2.2" fill="#ffffff" />
+                    <circle cx="60" cy="58" r="1.1" fill="#ffffff" />
+
+                    <!-- Ojo derecho con brillito -->
+                    <ellipse cx="102" cy="56" rx="5.5" ry="7.5" fill="#1b002c" />
+                    <circle cx="100" cy="53" r="2.2" fill="#ffffff" />
+                    <circle cx="104" cy="58" r="1.1" fill="#ffffff" />
+
+                    <!-- Mejillas sonrojadas -->
+                    <ellipse cx="48" cy="65" rx="6.5" ry="4.5" fill="#ff4d88" opacity="0.65" />
+                    <ellipse cx="112" cy="65" rx="6.5" ry="4.5" fill="#ff4d88" opacity="0.65" />
+
+                    <!-- Sonrisa tierna -->
+                    <path d="M 72 65 Q 80 74 88 65" fill="none" stroke="#1b002c" stroke-width="2.8"
+                        stroke-linecap="round" />
+
+                    <!-- Brillo de luz superior -->
+                    <path d="M 40,25 C 45,16 60,18 64,25" fill="none" stroke="#ffffff" stroke-width="3"
+                        stroke-linecap="round" opacity="0.75" />
+                </svg>
+            </div>
+
+            <h2 class="loader-title">Cargando nuestro amor...</h2>
+            <p class="loader-subtitle">Preparando algo muy especial para ti 💕</p>
+
+            <div class="loader-bar-container">
+                <div class="loader-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+       2. FONDO PARALLAX MULTICAPA CON CORAZONES
+       Capas con diferentes velocidades, opacidades y profundidades
+       ============================================================ -->
+    <div class="parallax-viewport" id="parallax-viewport" aria-hidden="true">
+        <!-- Capa 1: Lejana (más oscura, pequeña y lenta) -->
+        <div class="parallax-layer layer-far" id="layer-far"></div>
+        <!-- Capa 2: Media (tamaño y velocidad intermedios) -->
+        <div class="parallax-layer layer-mid" id="layer-mid"></div>
+        <!-- Capa 3: Cercana (brillante, grande y rápida) -->
+        <div class="parallax-layer layer-near" id="layer-near"></div>
+    </div>
+
+    <!-- ============================================================
+       3. CONTENEDOR PRINCIPAL
+       ============================================================ -->
+    <main class="main-wrapper">
+
+        <!-- HEADER / HERO & DEDICATORIA -->
+        <header class="hero-section">
+            <div class="romantic-badge">
+                <span>✨</span>
+                <span>Un Rincón Especial Solo Para Nosotros</span>
+                <span>✨</span>
+            </div>
+
+            <h1 class="main-title">Nuestra Historia de Amor</h1>
+
+            <!-- Tarjeta de Dedicatoria -->
+            <section class="dedication-card" aria-label="Dedicatoria">
+                <div class="dedication-recipient-row">
+                    <span class="dedication-label">Para:</span>
+                    <!-- Escribe aquí el nombre de tu amor -->
+                    <span class="dedication-name">Gianni</span>
+                </div>
+
+                <p class="dedication-quote">
+                    "Desde que estás en mi vida, cada instante tiene más luz, más ternura y un sinfín de razones para
+                    sonreír. Gracias por ser mi lugar seguro y mi pensamiento más bonito."
+                </p>
+
+                <!-- Botón interactivo que lanza corazones -->
+                <button id="btn-love-burst" class="btn-love-burst" type="button">
+                    <span>💖</span>
+                    <span>Toca aquí si me amas</span>
+                    <span>✨</span>
+                </button>
+            </section>
+        </header>
+
+        <!-- ============================================================
+         4. TEMPORIZADOR (DESDE EL 29/04/2026)
+         Cuadros separados: Días, Horas, Minutos y Segundos
+         ============================================================ -->
+        <section class="timer-section" aria-label="Temporizador de amor">
+            <div class="section-header">
+                <h2 class="section-title">Tiempo a Tu Lado</h2>
+                <p class="section-subtitle">
+                    <span>💜</span>
+                    <span>Tiempo transcurrido desde el 29 de abril de 2026</span>
+                    <span>💜</span>
+                </p>
+            </div>
+
+            <!-- Cuadros separados para el contador -->
+            <div class="timer-grid">
+                <!-- Cuadro Días -->
+                <article class="timer-box">
+                    <span class="timer-icon">✨</span>
+                    <span class="timer-number" id="timer-days">0</span>
+                    <span class="timer-label">Días</span>
+                </article>
+
+                <!-- Cuadro Horas -->
+                <article class="timer-box">
+                    <span class="timer-icon">🌙</span>
+                    <span class="timer-number" id="timer-hours">00</span>
+                    <span class="timer-label">Horas</span>
+                </article>
+
+                <!-- Cuadro Minutos -->
+                <article class="timer-box">
+                    <span class="timer-icon">⏳</span>
+                    <span class="timer-number" id="timer-minutes">00</span>
+                    <span class="timer-label">Minutos</span>
+                </article>
+
+                <!-- Cuadro Segundos -->
+                <article class="timer-box">
+                    <span class="timer-icon">💓</span>
+                    <span class="timer-number" id="timer-seconds">00</span>
+                    <span class="timer-label">Segundos</span>
+                </article>
+            </div>
+
+            <p class="timer-tagline">
+                Y cada segundo que pasa te amo un poquito más... ♾️
+            </p>
+        </section>
+
+        <!-- ============================================================
+         5. APARTADO DE CARTA PERSONALIZABLE
+         Aquí puedes reemplazar el texto con tus propias palabras
+         ============================================================ -->
+        <section class="letter-section" aria-label="Carta de amor">
+            <article class="letter-card">
+                <!-- Sello de lacre con corazón -->
+                <div class="letter-stamp" title="Sellado con amor">❤️</div>
+
+                <div class="letter-header-decor">
+                    <div class="decor-line"></div>
+                    <h2 class="letter-title">Una Carta Para Ti</h2>
+                    <div class="decor-line"></div>
+                </div>
+
+                <!-- ============================================================ -->
+                <!-- 💌 AQUÍ PUEDES ESCRIBIR TU TEXTO O CARTA DE AMOR            -->
+                <!-- Reemplaza el párrafo que está a continuación con lo que quieras -->
+                <!-- ============================================================ -->
+                <div id="letter-content" class="letter-content" spellcheck="false">
+                    <p>
+                        Hola, amor. Sé que a lo mejor este no es un buen momento para esto, pero no encontré otra forma
+                        de disculparme. Te amo muchísimo. Sé que me equivoco demasiado, pero intento hacer lo mejor que
+                        puedo para hacerte feliz; eres lo mejor que me ha pasado.
+                    </p>
+                    <p style="margin-top: 14px;">
+                        Gracias por tu paciencia, por tu cariño y por regalarme la versión más feliz de mí. No importa
+                        el lugar ni la distancia, mi hogar siempre será donde estés tú. Prometo seguir cuidándote,
+                        haciéndote reír y recordándote todos los días lo mucho que te amo.
+                    </p>
+                </div>
+
+                <div class="letter-signature">
+                    Con todo mi amor, por siempre ❤️
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+         6. GALERÍA DE IMÁGENES CON SCROLL Y LIGHTBOX
+         Usa las 6 fotos de la carpeta img/
+         ============================================================ -->
+        <section class="gallery-section" aria-label="Galería de recuerdos">
+            <div class="section-header">
+                <h2 class="section-title">Nuestra Galería de Recuerdos</h2>
+                <p class="section-subtitle">
+                    <span>📸</span>
+                    <span>Desliza para ver más • Toca cualquier foto para agrandarla</span>
+                    <span>✨</span>
+                </p>
+            </div>
+
+            <div class="gallery-container-wrapper">
+                <!-- Botón flecha izquierda -->
+                <button id="gallery-prev" class="gallery-nav-btn prev" type="button"
+                    aria-label="Foto anterior">❮</button>
+
+                <!-- Carril con scroll horizontal de fotos -->
+                <div class="gallery-scroll-track" id="gallery-track">
+
+                    <!-- Foto 1 -->
+                    <article class="photo-card" data-index="0">
+                        <div class="photo-img-wrapper">
+                            <img src="img/51f645abb25c2452a1caefe54f74ac3d_0.webp" alt="Tu mirada hermosa"
+                                class="gallery-img" loading="lazy">
+                            <div class="photo-zoom-hint" title="Agrandar">🔍</div>
+                        </div>
+                        <div class="photo-caption">
+                            <span>💜</span>
+                            <span class="photo-caption-text">Tu mirada que me enamora</span>
+                        </div>
+                    </article>
+
+                    <!-- Foto 2 -->
+                    <article class="photo-card" data-index="1">
+                        <div class="photo-img-wrapper">
+                            <img src="img/62ec0b93fb0b1f9fcc4c3626929e6fd2_0.webp" alt="Mi persona favorita"
+                                class="gallery-img" loading="lazy">
+                            <div class="photo-zoom-hint" title="Agrandar">🔍</div>
+                        </div>
+                        <div class="photo-caption">
+                            <span>🥰</span>
+                            <span class="photo-caption-text">Mi persona favorita</span>
+                        </div>
+                    </article>
+
+                    <!-- Foto 3 -->
+                    <article class="photo-card" data-index="2">
+                        <div class="photo-img-wrapper">
+                            <img src="img/IMG_20250704_182610_199.webp" alt="Sonrisa inolvidable" class="gallery-img"
+                                loading="lazy">
+                            <div class="photo-zoom-hint" title="Agrandar">🔍</div>
+                        </div>
+                        <div class="photo-caption">
+                            <span>🌸</span>
+                            <span class="photo-caption-text">La sonrisa más linda</span>
+                        </div>
+                    </article>
+
+                    <!-- Foto 4 -->
+                    <article class="photo-card" data-index="3">
+                        <div class="photo-img-wrapper">
+                            <img src="img/Screenshot_20250622_020445_TikTok.jpg" alt="Momentos especiales"
+                                class="gallery-img" loading="lazy">
+                            <div class="photo-zoom-hint" title="Agrandar">🔍</div>
+                        </div>
+                        <div class="photo-caption">
+                            <span>✨</span>
+                            <span class="photo-caption-text">Recuerdos inolvidables</span>
+                        </div>
+                    </article>
+
+                    <!-- Foto 5 -->
+                    <article class="photo-card" data-index="4">
+                        <div class="photo-img-wrapper">
+                            <img src="img/bf875beb294ec6c60fd7685c04101717_0.jpeg" alt="Llenos de besitos"
+                                class="gallery-img" loading="lazy">
+                            <div class="photo-zoom-hint" title="Agrandar">🔍</div>
+                        </div>
+                        <div class="photo-caption">
+                            <span>💋</span>
+                            <span class="photo-caption-text">Llenos de besitos y amor</span>
+                        </div>
+                    </article>
+
+                    <!-- Foto 6 -->
+                    <article class="photo-card" data-index="5">
+                        <div class="photo-img-wrapper">
+                            <img src="img/c349ce8543950e549d1f49dcd36fab28_0.jpeg" alt="Tú iluminas mis días"
+                                class="gallery-img" loading="lazy">
+                            <div class="photo-zoom-hint" title="Agrandar">🔍</div>
+                        </div>
+                        <div class="photo-caption">
+                            <span>☀️</span>
+                            <span class="photo-caption-text">Tú iluminas cada día</span>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Botón flecha derecha -->
+                <button id="gallery-next" class="gallery-nav-btn next" type="button"
+                    aria-label="Foto siguiente">❯</button>
+            </div>
+
+            <!-- Indicadores circulares de posición -->
+            <div class="gallery-dots" id="gallery-dots"></div>
+        </section>
+
+        <!-- ============================================================
+         7. MÚSICA SPOTIFY: LONELY DAY - SYSTEM OF A DOWN
+         ============================================================ -->
+        <section class="music-section" aria-label="Nuestra música">
+            <article class="music-player-card">
+                <div class="music-header">
+                    <div class="music-meta">
+                        <!-- Vinilo girando -->
+                        <div class="vinyl-disc" aria-hidden="true">
+                            <div class="vinyl-center"></div>
+                        </div>
+                        <div class="music-title-group">
+                            <span class="music-song-name">Lonely Day</span>
+                            <span class="music-artist-name">System of a Down • Nuestra Canción</span>
+                        </div>
+                    </div>
+
+                    <!-- Ecualizador de ondas animadas -->
+                    <div class="music-equalizer" aria-hidden="true">
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                    </div>
+                </div>
+
+                <!-- Reproductor de Spotify Iframe oficial -->
+                <div class="spotify-embed-container">
+                    <iframe style="border-radius:16px"
+                        src="https://open.spotify.com/embed/track/1VNWaY3uNfoeWqb5U8x2QX?utm_source=generator&si=746e1d0324a64364"
+                        width="100%" height="152" frameBorder="0" allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy">
+                    </iframe>
+                </div>
+
+                <div style="display: flex; justify-content: center; margin-top: 6px;">
+                    <a href="https://open.spotify.com/intl-es/track/1VNWaY3uNfoeWqb5U8x2QX?si=a6d00b80a69e4bff"
+                        target="_blank" rel="noopener noreferrer" class="btn-secondary" style="text-decoration: none;">
+                        <span>🎧</span>
+                        <span>Escuchar directamente en Spotify</span>
+                        <span>↗</span>
+                    </a>
+                </div>
+            </article>
+        </section>
+
+        <!-- ============================================================
+         8. FOOTER ROMÁNTICO
+         ============================================================ -->
+        <footer class="romantic-footer">
+            <p class="footer-quote">Hecho con todo mi amor solo para ti ❤️</p>
+            <p class="footer-sub">Por siempre y para siempre ♾️✨</p>
+        </footer>
+
+    </main>
+
+    <!-- ============================================================
+       9. MODAL LIGHTBOX (ZOOM DE FOTOS EN PANTALLA COMPLETA)
+       ============================================================ -->
+    <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Visualizador de fotos">
+        <div class="lightbox-inner">
+            <button id="lightbox-close" class="lightbox-close-btn" type="button" aria-label="Cerrar">✕</button>
+            <button id="lightbox-prev" class="lightbox-arrow prev" type="button" aria-label="Foto anterior">❮</button>
+
+            <img id="lightbox-img" class="lightbox-img" src="" alt="Foto ampliada">
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+
+            <button id="lightbox-next" class="lightbox-arrow next" type="button" aria-label="Foto siguiente">❯</button>
+        </div>
+    </div>
+
+    <!-- Script interactivo -->
+    <script src="script.js"></script>
+</body>
+
+</html>
